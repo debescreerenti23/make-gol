@@ -4,62 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Establecimiento de Metas - Brian Tracy</title>
-    <!-- Link para el Favicon de Emoji (🎯) -->
+    <!-- Icono de pestaña (Emoji 🎯) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Librerías externas: jsPDF y Tailwind -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen flex flex-col items-center p-4">
 
     <div class="w-full max-w-2xl mt-10 mb-20">
         <header class="text-center mb-10">
-            <!-- Título actualizado a ESTABLECIMIENTO DE METAS -->
             <h1 class="text-4xl font-bold tracking-widest uppercase mb-2 text-gradient">ESTABLECIMIENTO DE METAS</h1>
             <p class="text-sm opacity-80 text-cyan-500" id="current-date-display"></p>
         </header>
 
         <div class="glass-card p-8 rounded-lg">
             <div id="setup-form" class="space-y-8">
-                <!-- Pregunta 1 -->
+                <!-- Formulario -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">1. ¿Qué es lo que realmente desea en la vida? (Sea específico)</label>
                     <textarea id="q1" rows="3" class="w-full p-3 rounded" placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
 
-                <!-- Pregunta 2 -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">2. ¿Por qué lo desea? (Sus razones y motivos)</label>
                     <textarea id="q2" rows="3" class="w-full p-3 rounded" placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
 
-                <!-- Pregunta 3 -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">3. ¿Cuándo desea lograrlo? (Establezca un plazo)</label>
                     <input id="q3" type="text" class="w-full p-3 rounded" placeholder="Ej: Diciembre 2026">
                 </div>
 
-                <!-- Pregunta 4 -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">4. ¿Cuál es el obstáculo más grande que lo detiene?</label>
                     <textarea id="q4" rows="3" class="w-full p-3 rounded" placeholder="Analice sus limitaciones..."></textarea>
                 </div>
 
-                <!-- Pregunta 5 -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">5. ¿Qué información o habilidades adicionales necesita?</label>
                     <textarea id="q5" rows="3" class="w-full p-3 rounded" placeholder="Conocimientos necesarios..."></textarea>
                 </div>
 
-                <!-- Pregunta 6 -->
                 <div>
                     <label class="block mb-2 font-bold uppercase text-xs tracking-tighter">6. ¿Quiénes son las personas cuya ayuda o cooperación necesita?</label>
                     <textarea id="q6" rows="3" class="w-full p-3 rounded" placeholder="Alianzas clave..."></textarea>
                 </div>
 
                 <div class="pt-6">
-                    <button onclick="generatePDF()" class="w-full py-4 rounded font-bold uppercase tracking-wider btn-gradient">
+                    <button id="download-btn" onclick="generatePDF()" class="w-full py-4 rounded font-bold uppercase tracking-wider btn-gradient">
                         Generar Informe de Metas (PDF)
                     </button>
                 </div>
@@ -70,6 +67,8 @@
     <footer class="w-full mt-auto py-6 text-center text-xs opacity-60">
         <p>javilindj &copy; <span id="year"></span> Todos los derechos reservados</p>
     </footer>
-<script src="script.js"></script>
+
+    <!-- Script principal -->
+    <script src="script.js"></script>
 </body>
 </html>
