@@ -6,80 +6,10 @@
     <title>Establecimiento de Metas - Brian Tracy</title>
     <!-- Link para el Favicon de Emoji (🎯) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
-    
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --color-1: #2ecc71; /* Verde */
-            --color-2: #3498db; /* Azul */
-            --color-3: #00f2ff; /* Cian */
-            --bg-color: #080808;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
-            background-image: radial-gradient(circle at top right, rgba(46, 204, 113, 0.05), transparent),
-                              radial-gradient(circle at bottom left, rgba(52, 152, 219, 0.05), transparent);
-        }
-
-        /* Animación de parpadeo suave */
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3)); }
-            50% { opacity: 0.7; filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.6)); }
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, var(--color-1), var(--color-2), var(--color-3));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        .glass-card {
-            background: rgba(15, 15, 15, 0.9);
-            border: 2px solid transparent;
-            border-image: linear-gradient(to bottom right, var(--color-1), var(--color-2), var(--color-3)) 1;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
-        }
-
-        label {
-            color: var(--color-1);
-        }
-
-        input, textarea {
-            background: #111 !important;
-            border: 1px solid #222 !important;
-            color: var(--color-3) !important;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--color-2) !important;
-            outline: none;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn-gradient {
-            background: linear-gradient(45deg, #1b5e20, #1a5276, #007a80);
-            color: white;
-            transition: all 0.4s ease;
-            border: none;
-        }
-
-        .btn-gradient:hover {
-            background: linear-gradient(45deg, var(--color-1), var(--color-2), var(--color-3));
-            color: #000;
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            border-top: 1px solid rgba(52, 152, 219, 0.2);
-        }
-    </style>
+    
 </head>
 <body class="min-h-screen flex flex-col items-center p-4">
 
@@ -140,79 +70,6 @@
     <footer class="w-full mt-auto py-6 text-center text-xs opacity-60">
         <p>javilindj &copy; <span id="year"></span> Todos los derechos reservados</p>
     </footer>
-
-    <script>
-        // Actualizar fecha
-        const now = new Date();
-        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        const monthName = months[now.getMonth()];
-        const yearValue = now.getFullYear();
-
-        document.getElementById('current-date-display').innerText = `${monthName} ${yearValue}`;
-        document.getElementById('year').innerText = yearValue;
-
-        async function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            const questions = [
-                "1. ¿Qué es lo que realmente desea en la vida?",
-                "2. ¿Por qué lo desea?",
-                "3. ¿Cuándo desea lograrlo?",
-                "4. ¿Cuál es el obstáculo más grande que lo detiene?",
-                "5. ¿Qué información o habilidades adicionales necesita?",
-                "6. ¿Quiénes son las personas cuya ayuda o cooperación necesita?"
-            ];
-
-            const answers = [
-                document.getElementById('q1').value,
-                document.getElementById('q2').value,
-                document.getElementById('q3').value,
-                document.getElementById('q4').value,
-                document.getElementById('q5').value,
-                document.getElementById('q6').value
-            ];
-
-            // Color del encabezado PDF
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(22);
-            doc.setTextColor(0, 150, 150); 
-            doc.text("ESTABLECIMIENTO DE METAS", 20, 30);
-            
-            doc.setFontSize(12);
-            doc.setTextColor(100);
-            doc.text(`Registro Mensual: ${monthName} ${yearValue}`, 20, 40);
-            doc.setDrawColor(0, 150, 150);
-            doc.line(20, 45, 190, 45);
-
-            let yPos = 60;
-            doc.setFontSize(10);
-            doc.setTextColor(0);
-
-            for(let i = 0; i < questions.length; i++) {
-                if(yPos > 250) {
-                    doc.addPage();
-                    yPos = 30;
-                }
-                
-                doc.setFont("helvetica", "bold");
-                const splitQuestion = doc.splitTextToSize(questions[i], 170);
-                doc.text(splitQuestion, 20, yPos);
-                yPos += (splitQuestion.length * 7);
-
-                doc.setFont("helvetica", "normal");
-                const text = answers[i] || "Sin respuesta.";
-                const splitAnswer = doc.splitTextToSize(text, 160);
-                doc.text(splitAnswer, 25, yPos);
-                yPos += (splitAnswer.length * 7) + 10;
-            }
-
-            doc.setFontSize(8);
-            doc.setTextColor(150);
-            doc.text(`javilindj © ${yearValue} - Documento de Enfoque Estratégico`, 20, 285);
-
-            doc.save(`Metas_${monthName}_${yearValue}.pdf`);
-        }
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
