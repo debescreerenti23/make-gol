@@ -20,12 +20,13 @@ async function generatePDF() {
         const doc = new jsPDF();
 
         const questions = [
-            "1. ¿Qué es lo que realmente desea en la vida?",
-            "2. ¿Por qué lo desea?",
-            "3. ¿Cuándo desea lograrlo?",
-            "4. ¿Cuál es el obstáculo más grande que lo detiene?",
-            "5. ¿Qué información o habilidades adicionales necesita?",
-            "6. ¿Quiénes son las personas cuya ayuda o cooperación necesita?"
+            "1. ¿Cuales son sus 5 valores básicos?",
+            "2. ¿Escribe tus 3 metas más importantes?",
+            "3. ¿Qué haría si le dicen que le quedan 6 meses de vida?",
+            "4. ¿Qué harías si te toca 1 millón en la lotería?",
+            "5. ¿Qué es lo que siempre ha querido hacer pero ha tenido miedo de intentar?",
+            "6. ¿Cuando ha sido más feliz, cuando se ha sentido más feliz consigo mismo?",
+            "7. ¿Qué gran cosa se atrevería a soñar si supiera que no podría fallar?"
         ];
 
         const answers = [
@@ -34,7 +35,8 @@ async function generatePDF() {
             document.getElementById('q3').value || "Sin respuesta",
             document.getElementById('q4').value || "Sin respuesta",
             document.getElementById('q5').value || "Sin respuesta",
-            document.getElementById('q6').value || "Sin respuesta"
+            document.getElementById('q6').value || "Sin respuesta",
+            document.getElementById('q7').value || "Sin respuesta"
         ];
 
         // Diseño del encabezado del PDF

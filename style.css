@@ -9,8 +9,8 @@ body {
     background-color: var(--bg-color);
     color: #e0e0e0;
     font-family: 'Courier New', Courier, monospace;
-    background-image: radial-gradient(circle at top right, rgba(46, 204, 113, 0.05), transparent),
-                      radial-gradient(circle at bottom left, rgba(52, 152, 219, 0.05), transparent);
+    background-image: radial-gradient(circle at top right, rgba(46, 204, 113, 0.05), transparent),                      radial-gradient(circle at bottom left, rgba(52, 152, 219, 0.05), transparent);
+    
 }
 
 /* Animación de parpadeo suave para el H1 */
